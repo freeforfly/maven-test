@@ -11,5 +11,9 @@ import com.swj.basic.annotation.FreewayPath;
 @FreewayPath
 public interface TestApiService {
 
+    /**
+     * testMethod
+     * @return boolean
+     */
     boolean testMethod();
 }
