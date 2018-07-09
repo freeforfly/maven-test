@@ -2,6 +2,8 @@ package com.top;
 
 import com.swj.framework.helper.StringHelper;
 
+import java.util.concurrent.CountDownLatch;
+
 /**
  * Description
  *
@@ -31,11 +33,33 @@ public class Utils {
                 maxLength = nextLength;
             }
         }
-        StringBuilder result = new StringBuilder();
+        StringBuffer result = new StringBuffer();
         for (int i = 0; i < maxLength; i++) {
             result.append(maxChar);
         }
+        System.out.println(result);
         return result.toString();
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(100);
+        for (int i = 0; i < 100; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        latch.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread() + ":" + Utils.getMaxLengthStr
+                            ("fdssssssssfjljkkkkkkkkkkdr"));
+                }
+            }).start();
+            latch.countDown();
+        }
+        System.out.println("============go======");
     }
 
 }

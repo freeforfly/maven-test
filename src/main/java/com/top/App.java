@@ -1,12 +1,6 @@
 package com.top;
 
-import com.swj.framework.helper.PackageHelper;
-import com.swj.framework.helper.StringHelper;
-
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 
 /**
  * Description
@@ -15,6 +9,6 @@ import java.util.List;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println(StringHelper.convertToDate("2018-01-02 00:00:00", Calendar.getInstance().getTime()));
+        XmlWebApplicationContext context = new XmlWebApplicationContext();
     }
 }
